@@ -1,25 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import Navbar from "./components/navbar.component";
+import VillagersList from "./components/villagers-list.component";
+import EditVillager from "./components/edit-villager.component";
+import AddVillager from "./components/add-villager.component";
+import DeleteVillager from "./components/delete-villager.component";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="container">
+        <Navbar />
+        <br />
+        <Route path="/" exact component={VillagersList} />
+        <Route path="/edit/:id" component={EditVillager} />
+        <Route path="/create" component={AddVillager} />
+        <Route path="/remove/:id" component={DeleteVillager} />
+      </div>
+    </Router>
   );
 }
 
