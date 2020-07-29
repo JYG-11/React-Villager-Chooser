@@ -40,4 +40,39 @@ router.route("/add").post((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
+router.route("/:id").get((req, res) => {
+  Villager.findById(req.params.id).then((villager) =>
+    res.json(villager).catch((err) => res.status(400).json("Error: " + err))
+  );
+});
+
+router.route("/delete/:id").delete((req, res) => {
+  Villager.findByIdAndDelete(req.params.id)
+    .then(() => res.json("Villager deleted"))
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
+router.route("/update/:id").post((req, res) => {
+  Villager.findById(req.params.id)
+    .then((villager) => {
+      villager.name = req.body.name;
+      villager.personality = req.body.personality;
+      villager.specie = req.body.specie;
+      villager.birthday = req.body.birthday;
+      villager.catchphrase = req.body.catchphrase;
+      villager.skill = req.body.skill;
+      villager.goal = req.body.goal;
+      villager.fear = req.body.fear;
+      villager.styles = req.body.styles;
+      villager.colors = req.body.colors;
+      villager.song = req.body.song;
+
+      villager
+        .save()
+        .then(() => res.json("Villager updated!"))
+        .catch((err) => res.status(400).json("Error: " + err));
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+});
+
 module.exports = router;
