@@ -53,7 +53,7 @@ const AddVillager = () => {
   const [name, setName] = useState("");
   const [personality, setPersonality] = useState("");
   const [specie, setSpecie] = useState("");
-  const [month, setMonth] = useState(0);
+  const [month, setMonth] = useState("");
   const [day, setDay] = useState(0);
   const [catchphrase, setCatchphrase] = useState("");
   const [skill, setSkill] = useState("");

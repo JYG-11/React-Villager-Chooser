@@ -12,7 +12,7 @@ const villagerSchema = new Schema(
     name: { type: String, required: true },
     personality: { type: String, required: true },
     specie: { type: String, required: true },
-    birthday: [birthdaySchema],
+    birthday: birthdaySchema,
     catchphrase: { type: String, required: true },
     skill: { type: String, required: false },
     goal: { type: String, required: false },
