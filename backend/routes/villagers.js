@@ -13,9 +13,6 @@ router.route("/add").post((req, res) => {
   const specie = req.body.specie;
   const birthday = req.body.birthday;
   const catchphrase = req.body.catchphrase;
-  const skill = req.body.skill;
-  const goal = req.body.goal;
-  const fear = req.body.fear;
   const styles = req.body.styles;
   const colors = req.body.colors;
   const song = req.body.song;
@@ -26,9 +23,6 @@ router.route("/add").post((req, res) => {
     specie,
     birthday,
     catchphrase,
-    skill,
-    goal,
-    fear,
     styles,
     colors,
     song,
@@ -60,9 +54,6 @@ router.route("/update/:id").post((req, res) => {
       villager.specie = req.body.specie;
       villager.birthday = req.body.birthday;
       villager.catchphrase = req.body.catchphrase;
-      villager.skill = req.body.skill;
-      villager.goal = req.body.goal;
-      villager.fear = req.body.fear;
       villager.styles = req.body.styles;
       villager.colors = req.body.colors;
       villager.song = req.body.song;

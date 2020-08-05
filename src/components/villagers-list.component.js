@@ -16,9 +16,6 @@ const Villager = (props) => {
           moment(props.villager.birthday.day, "D").format("Do")}
       </td>
       <td>{props.villager.catchphrase}</td>
-      <td>{props.villager.skill}</td>
-      <td>{props.villager.goal}</td>
-      <td>{props.villager.fear}</td>
       <td>{props.villager.styles[0] + ", " + props.villager.styles[1]}</td>
       <td>{props.villager.colors[0] + ", " + props.villager.colors[1]}</td>
       <td>{props.villager.song}</td>
@@ -70,9 +67,6 @@ const VillagersList = () => {
             <th>Specie</th>
             <th>Birthday</th>
             <th>Catchphrase</th>
-            <th>Skill</th>
-            <th>Goal</th>
-            <th>Fear</th>
             <th>Styles</th>
             <th>Colors</th>
             <th>Song</th>

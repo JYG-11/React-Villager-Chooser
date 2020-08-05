@@ -47,9 +47,6 @@ const AddVillager = () => {
       specie: specie,
       birthday: { month, day },
       catchphrase: catchphrase,
-      skill: skill,
-      goal: goal,
-      fear: fear,
       styles: [style1, style2],
       colors: [color1, color2],
       song: song,
@@ -140,36 +137,6 @@ const AddVillager = () => {
             className="form-control"
             value={catchphrase}
             onChange={(e) => setCatchphrase(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Skill: </label>
-          <input
-            type="text"
-            required
-            className="form-control"
-            value={skill}
-            onChange={(e) => setSkill(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Goal: </label>
-          <input
-            type="text"
-            required
-            className="form-control"
-            value={goal}
-            onChange={(e) => setGoal(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Fear: </label>
-          <input
-            type="text"
-            required
-            className="form-control"
-            value={fear}
-            onChange={(e) => setFear(e.target.value)}
           />
         </div>
         <div className="form-group">
