@@ -3,9 +3,11 @@ import axios from "axios";
 import moment from "moment";
 
 const EditVillager = (props) => {
+  let initial = Array.from(Array(31).keys());
+  initial = initial.map((day) => moment(day + 1, "D").format("Do"));
+
   const months = moment.monthsShort();
-  let days = Array.from(Array(31).keys());
-  days = days.map((day) => day + 1);
+  const [days, setDays] = useState(initial);
 
   const [name, setName] = useState("");
   const [personality, setPersonality] = useState("");
@@ -55,6 +57,19 @@ const EditVillager = (props) => {
       })
       .catch((error) => console.log(error));
   }, [currentVillager]);
+
+  const onChangeMonth = (e) => {
+    setMonth(e.target.value);
+    let temp = new Date(
+      new Date(2020, moment(e.target.value, "MMM").format("M"), 1) - 1
+    );
+    setDays(
+      Array.from(Array(temp.getDate()).keys()).map((day) =>
+        moment(day + 1, "D").format("Do")
+      )
+    );
+    console.log("print: " + temp.getDate());
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -146,7 +161,7 @@ const EditVillager = (props) => {
             required
             className="form-control"
             value={month}
-            onChange={(e) => setMonth(e.target.value)}
+            onChange={onChangeMonth}
           >
             {months.map(function (m) {
               return (
@@ -168,7 +183,7 @@ const EditVillager = (props) => {
             {days.map(function (d) {
               return (
                 <option key={d} value={d}>
-                  {moment(d, "D").format("Do")}
+                  {d}
                 </option>
               );
             })}
