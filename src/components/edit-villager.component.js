@@ -6,6 +6,7 @@ const EditVillager = (props) => {
   const months = moment.monthsShort();
   let days = Array.from(Array(31).keys());
   days = days.map((day) => day + 1);
+
   const [name, setName] = useState("");
   const [personality, setPersonality] = useState("");
   const [specie, setSpecie] = useState("");

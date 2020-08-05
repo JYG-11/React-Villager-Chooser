@@ -46,7 +46,7 @@ router.route("/:id").get((req, res) => {
   );
 });
 
-router.route("/delete/:id").delete((req, res) => {
+router.route("/remove/:id").delete((req, res) => {
   Villager.findByIdAndDelete(req.params.id)
     .then(() => res.json("Villager deleted"))
     .catch((err) => res.status(400).json("Error: " + err));
