@@ -1,55 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
+import moment from "moment";
 
 const AddVillager = () => {
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ];
-  const days = [
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-    20,
-    21,
-    22,
-    23,
-    24,
-    25,
-    26,
-    27,
-    28,
-    29,
-    30,
-    31,
-  ];
+  const months = moment.monthsShort();
+  let days = Array.from(Array(31).keys());
+  days = days.map((day) => day + 1);
   const [name, setName] = useState("");
   const [personality, setPersonality] = useState("");
   const [specie, setSpecie] = useState("");
@@ -68,7 +25,7 @@ const AddVillager = () => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    const newVillager = {
+    const villager = {
       name: name,
       personality: personality,
       specie: specie,
@@ -82,10 +39,10 @@ const AddVillager = () => {
       song: song,
     };
 
-    console.log(newVillager);
+    console.log(villager);
 
     axios
-      .post("http://localhost:5000/villagers/add", newVillager)
+      .post("http://localhost:5000/villagers/add", villager)
       .then((res) => console.log(res.data));
 
     window.location = "/";
@@ -153,7 +110,7 @@ const AddVillager = () => {
             {days.map(function (d) {
               return (
                 <option key={d} value={d}>
-                  {d}
+                  {moment(d, "D").format("Do")}
                 </option>
               );
             })}
