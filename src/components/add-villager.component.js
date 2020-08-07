@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import moment from "moment";
@@ -16,9 +16,6 @@ const AddVillager = () => {
   const [month, setMonth] = useState("");
   const [day, setDay] = useState("");
   const [catchphrase, setCatchphrase] = useState("");
-  const [skill, setSkill] = useState("");
-  const [goal, setGoal] = useState("");
-  const [fear, setFear] = useState("");
   const [style1, setStyle1] = useState("");
   const [style2, setStyle2] = useState("");
   const [color1, setColor1] = useState("");

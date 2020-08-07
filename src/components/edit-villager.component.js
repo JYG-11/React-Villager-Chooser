@@ -15,9 +15,6 @@ const EditVillager = (props) => {
   const [month, setMonth] = useState("");
   const [day, setDay] = useState(0);
   const [catchphrase, setCatchphrase] = useState("");
-  const [skill, setSkill] = useState("");
-  const [goal, setGoal] = useState("");
-  const [fear, setFear] = useState("");
   const [style1, setStyle1] = useState("");
   const [style2, setStyle2] = useState("");
   const [color1, setColor1] = useState("");
@@ -46,9 +43,6 @@ const EditVillager = (props) => {
         setMonth(response.data.birthday.month);
         setDay(response.data.birthday.day);
         setCatchphrase(response.data.catchphrase);
-        setSkill(response.data.skill);
-        setGoal(response.data.goal);
-        setFear(response.data.fear);
         setStyle1(response.data.styles[0]);
         setStyle2(response.data.styles[1]);
         setColor1(response.data.colors[0]);
