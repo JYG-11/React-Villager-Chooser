@@ -24,7 +24,6 @@ const interiorReqs = require.context(
 const interiorPaths = interiorReqs.keys();
 
 const Villager = (props) => {
-  console.log(props.villager.birthday);
   return (
     <tr>
       <td width="10%" height="150px">
@@ -32,7 +31,7 @@ const Villager = (props) => {
           <img
             src={villagerReqs(
               villagerPaths.filter((path) => {
-                return path.includes(props.villager.name);
+                return path === `./${props.villager.name}.png`;
               })
             )}
             alt={props.villager.name}
@@ -45,7 +44,7 @@ const Villager = (props) => {
             className="exterior-image"
             src={exteriorReqs(
               exteriorPaths.filter((path) => {
-                return path.includes(props.villager.name);
+                return path === `./${props.villager.name}.png`;
               })
             )}
             alt={props.villager.name + " house exterior"}
@@ -57,7 +56,11 @@ const Villager = (props) => {
           <img
             src={interiorReqs(
               interiorPaths.filter((path) => {
-                return path.includes(props.villager.name);
+                return (
+                  path === `./${props.villager.name}.png` ||
+                  path === `./${props.villager.name}.jpg` ||
+                  path === `./${props.villager.name}.jpeg`
+                );
               })
             )}
             alt={props.villager.name + " house interior"}
@@ -65,33 +68,32 @@ const Villager = (props) => {
         </div>
       </td>
       <td width="20%px">
-        Name: <strong>{props.villager.name}</strong>
+        <strong>{props.villager.name}</strong>
         <br />
-        Personality: <strong>{props.villager.personality}</strong>
+        <strong>{props.villager.personality}</strong>
         <br />
-        Specie: <strong>{props.villager.specie}</strong>
+        <strong>{props.villager.specie}</strong>
         <br />
-        Birthday:{" "}
+
         <strong>
           {props.villager.birthday.month +
             " " +
             moment(props.villager.birthday.day, "D").format("Do")}
         </strong>
         <br />
-        Catchphrase: <strong>{props.villager.catchphrase}</strong>
+        <strong>{props.villager.catchphrase}</strong>
       </td>
       <td width="20%">
-        Styles:{" "}
         <strong>
           {props.villager.styles[0] + ", " + props.villager.styles[1]}
         </strong>
         <br />
-        Colors:{" "}
+
         <strong>
           {props.villager.colors[0] + ", " + props.villager.colors[1]}
         </strong>
         <br />
-        Song: <strong>{props.villager.song}</strong>
+        <strong>{props.villager.song}</strong>
         <br />
       </td>
     </tr>
