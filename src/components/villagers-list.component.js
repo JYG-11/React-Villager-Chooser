@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import moment from "moment";
+import { useLocation } from "react-router-dom";
+const queryString = require("query-string");
 
 const villagerReqs = require.context(
   "../images/[VillagerImages]/",
@@ -102,17 +104,30 @@ const Villager = (props) => {
 
 const VillagersList = () => {
   const [villagers, setVillagers] = useState([]);
+  let location = useLocation().search;
+  let query = queryString.parse(location);
 
   const villagerList = () => {
-    return villagers.map((currentVillager) => {
-      return (
-        <Villager
-          villager={currentVillager}
-          deleteVillager={deleteVillager}
-          key={currentVillager._id}
-        />
-      );
-    });
+    return villagers
+      .filter(
+        (villager) =>
+          villager.personality.toLowerCase() === query.personality ||
+          villager.specie.toLowerCase() === query.specie ||
+          villager.birthday.month.toLowerCase() === query.birthmonth ||
+          villager.styles[0].toLowerCase() === query.style ||
+          villager.styles[1].toLowerCase() === query.style ||
+          villager.colors[0].toLowerCase() === query.color ||
+          villager.colors[1].toLowerCase() === query.color
+      )
+      .map((currentVillager) => {
+        return (
+          <Villager
+            villager={currentVillager}
+            deleteVillager={deleteVillager}
+            key={currentVillager._id}
+          />
+        );
+      });
   };
 
   useEffect(() => {
