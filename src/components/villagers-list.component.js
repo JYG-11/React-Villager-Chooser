@@ -111,6 +111,7 @@ const VillagersList = () => {
     return villagers
       .filter(
         (villager) =>
+          !location ||
           villager.personality.toLowerCase() === query.personality ||
           villager.specie.toLowerCase() === query.specie ||
           villager.birthday.month.toLowerCase() === query.birthmonth ||
